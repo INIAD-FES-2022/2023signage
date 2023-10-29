@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>advertisement</title>
+</head>
+<body>
+    <header>
+    </header>
+    <div class="slide" id="makeImg">
+        <img src="images/1.png">
+        <img src="images/2.png">
+        <img src="images/3.png">
+    </div>
+    <footer>
+    </footer>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+        }
+
+        header {
+            position: relative;
+            width: 1080px;
+            height: 160px;
+            background: black;
+            color: #fff;
+        }
+
+        footer {
+            position: absolute;
+            width: 1080px;
+            height: 160px;
+            background: black;
+            bottom: 0;
+            color: #fff;
+        }
+
+        .slide {
+            position: absolute;
+            overflow: hidden;
+            width: 1080px;
+            height: 1600px;
+            margin: auto;
+            background: #fff;
+            z-index: 0;
+        }
+
+        .slide img {
+            will-change: animation;
+            display: block;
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            left: -100%;
+            min-width: 1080px;
+            min-height: 1600px;
+            z-index: 1;
+        }
+    </style>
+
+    <script>
+        var currentSlide = 0;
+        var slideImages = document.querySelectorAll(".slide img");
+        
+        function changeSlide() {
+            slideImages[currentSlide].style.left = "-100%";
+            currentSlide = (currentSlide + 1) % slideImages.length;
+            slideImages[currentSlide].style.left = "0";
+        }
+
+        setInterval(changeSlide, 10000);
+    </script>
+</body>
+</html>
